@@ -2,6 +2,7 @@
 #define NODO_H
 
 #include <string>
+#include "contribuidor.h"
 
 struct Nodo {
     int id;
