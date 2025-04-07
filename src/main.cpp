@@ -7,20 +7,16 @@
 using namespace std;
 
 int main() {
-    // Cargar datos familiares desde el CSV ubicado en bin/familia.csv
     int count = 0;
     Nodo** nodos = cargarFamilia("bin/familia.csv", count);
     if (nodos == nullptr || count == 0) {
         cout << "No se pudo cargar el archivo de familia." << endl;
         return 1;
     }
-    // Construir el árbol genealógico
     Nodo* raiz = construirArbol(nodos, count);
     
-    // Cargar los contribuidores desde el CSV ubicado en bin/contribuidores.csv
     cargarContribuidores("bin/contribuidores.csv", nodos, count);
     
-    // Determinar el líder actual (se asume que el nodo con is_chief == true es el líder)
     Nodo* leader = nullptr;
     for (int i = 0; i < count; i++) {
         if (nodos[i]->is_chief) {
@@ -35,7 +31,7 @@ int main() {
     
     int opcion = 0;
     while (true) {
-        // Validar el líder antes de cada operación
+        validarLider(leader);
         
         cout << "\n Menu Principal \n";
         cout << "1. Mostrar linea de sucesion (solo vivos)\n";
@@ -45,7 +41,7 @@ int main() {
         cout << "5. Salir\n";
         cout << "Ingrese una opcion: ";
         cin >> opcion;
-        cin.ignore(); // Consumir el salto de línea
+        cin.ignore(); 
         
         if (opcion == 1) {
             cout << "\nLinea de sucesion (solo vivos):\n";
@@ -64,8 +60,7 @@ int main() {
         } else if (opcion == 3) {
             cout << "Simulando la muerte del lider actual (ID: " << leader->id << ")." << endl;
             leader->is_dead = true;
-            // Se llama a validarLider nuevamente para que, al detectar que está muerto,
-            // se reasigne automáticamente el liderazgo.
+            validarLider(leader);
         } else if (opcion == 4) {
             cout << "\nDatos del lider actual:\n";
             cout << "ID: " << leader->id 
@@ -92,7 +87,6 @@ int main() {
         }
     }
     
-    // Liberar memoria
     liberarArbol(raiz);
     delete[] nodos;
     

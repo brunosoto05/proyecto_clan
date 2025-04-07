@@ -8,7 +8,7 @@ struct Nodo {
     int id;
     std::string name;
     std::string last_name;
-    char gender;  // 'H' o 'M'
+    char gender;  
     int age;
     int id_father;
     bool is_dead;
@@ -16,12 +16,14 @@ struct Nodo {
     bool is_chief;
     
     Nodo* padre;
-    Nodo* hijoIzquierdo;   // Primer hijo
-    Nodo* hermanoDerecho;   // Siguiente hermano
+    Nodo* hijoIzquierdo;   
+    Nodo* hermanoDerecho;  
     
-    // Lista de contribuidores (implementada como lista enlazada)
     Contribuidor* contribuyentes;
     
+    bool visited;
+    bool resetDone;
+
     Nodo();
 };
 

@@ -14,7 +14,7 @@ Nodo** cargarFamilia(const std::string& filename, int& count) {
     count = 0;
     bool headerSkipped = false;
     while (getline(file, line)) {
-        if (!headerSkipped) { // Saltar la cabecera
+        if (!headerSkipped) { 
             headerSkipped = true;
             continue;
         }
@@ -32,7 +32,6 @@ Nodo** cargarFamilia(const std::string& filename, int& count) {
         std::istringstream ss(line);
         std::string token;
         Nodo* nuevo = new Nodo();
-        // Orden esperado: id,name,last_name,gender,age,id_father,is_dead,was_chief,is_chief
         getline(ss, token, ',');
         nuevo->id = std::stoi(token);
         
@@ -84,7 +83,6 @@ void cargarContribuidores(const std::string& filename, Nodo** nodos, int count) 
         if(line.empty()) continue;
         std::istringstream ss(line);
         std::string token;
-        // Orden esperado: nombre,edad,id,descripcion,grado
         Contribuidor* nuevo = new Contribuidor();
         
         getline(ss, token, ',');
@@ -104,7 +102,6 @@ void cargarContribuidores(const std::string& filename, Nodo** nodos, int count) 
         
         nuevo->siguiente = nullptr;
         
-        // Buscar el nodo correspondiente (según id) y asignar el contribuidor en orden
         for (int i = 0; i < count; i++) {
             if (nodos[i]->id == nodeId) {
                 Contribuidor** head = &(nodos[i]->contribuyentes);

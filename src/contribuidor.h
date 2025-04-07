@@ -6,9 +6,9 @@
 struct Contribuidor {
     std::string nombre;
     int edad;
-    int id;  // ID del nodo (miembro de la familia) al que pertenece
+    int id; 
     std::string descripcion;
-    int grado;  // Grado de contribución (1 a 10)
+    int grado;  
     Contribuidor* siguiente;
     
     Contribuidor();
