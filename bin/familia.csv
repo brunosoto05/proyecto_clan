@@ -1,0 +1,11 @@
+id,name,last_name,gender,age,id_father,is_dead,was_chief,is_chief
+1,Andres,Soto,H,75,0,0,1,1
+2,Carlos,Soto,H,50,1,0,0,0
+3,Fabiana,Soto,M,45,1,0,0,0
+4,Jose,Soto,H,30,2,0,0,0
+5,Carla,Soto,M,28,2,0,0,0
+6,Maria,Soto,M,20,3,0,0,0
+7,Ricardo,Soto,H,18,3,0,0,0
+8,Camila,Soto,M,16,4,0,0,0
+9,Anali,Soto,M,10,5,0,0,0
+10,Paola,Soto,M,8,5,0,0,0
